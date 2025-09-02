@@ -1,19 +1,21 @@
 // frontend/app.js
 const express = require("express");
-const app = express();
 const axios = require("axios");
+const app = express();
 
+// Read backend URL from environment variable
 const BACKEND_URL = process.env.BACKEND_URL || "http://backend.local:5000";
 
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get(`${BACKEND_URL}/api`);
+    const response = await axios.get('${BACKEND_URL}/api');
     res.send(`
       <h1>Frontend App</h1>
-      <p>Response from backend: ${response.data}</p>
+      // <p>Response from backend: ${response.data}</p>
+      <p>Response from backend: ${JSON.stringify(response.data)}</p>
     `);
   } catch (err) {
-    res.send(`<h1>Frontend App</h1><p>Backend not reachable</p>`);
+    res.send('<h1>Frontend App</h1><p>Backend not reachable</p>');
   }
 });
 
