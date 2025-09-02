@@ -9,10 +9,13 @@ const BACKEND_URL = process.env.BACKEND_URL || "http://backend.local:5000";
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get('${BACKEND_URL}/api');
+    const users = response.data.users || [];
+    
+    let usersHtml = users.map(u => `<li>${u.id}: ${u.name} (${u.email})</li>`).join("");
+
     res.send(`
       <h1>Frontend App</h1>
-      // <p>Response from backend: ${response.data}</p>
-      <p>Response from backend: ${JSON.stringify(response.data)}</p>
+      <ul>${usersHtml}</ul>      
     `);
   } catch (err) {
     res.send('<h1>Frontend App</h1><p>Backend not reachable</p>');
