@@ -4,7 +4,7 @@ const axios = require("axios");
 const app = express();
 
 // Read backend URL from environment variable
-const BACKEND_URL = process.env.BACKEND_URL || "http://backend.local:5000";
+const BACKEND_URL = process.env.BACKEND_URL || "http://backend.local:8080";
 
 app.get("/", async (req, res) => {
   try {
