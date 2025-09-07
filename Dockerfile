@@ -11,11 +11,11 @@ RUN npm install && npm audit fix
 COPY . .
 
 # Set environment variables
-ENV PORT=3000
+ENV PORT=8080
 ENV NODE_ENV=production
 
 # Expose the correct port
-EXPOSE 3000
+EXPOSE 8080
 
 # Start the application
 CMD ["node", "app.js"]
